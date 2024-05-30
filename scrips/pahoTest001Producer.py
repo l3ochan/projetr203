@@ -2,18 +2,35 @@
 
 import random
 import time
-
+import requests
 from paho.mqtt import client as mqtt_client
+
 
 # --------------------------------------------------
 
 broker = 'test.mosquitto.org'
 port = 1883
-topic = "/test917298739287"
+topic = "/cRarhCaXsRsDYMN454Spd5rdmY4DyHGfY7QkE3ma"
 # generate client ID with pub prefix randomly
 client_id = f'python-mqtt-{random.randint(0, 1000)}'
 callback_api_version = mqtt_client.MQTTv5
+api_key = "1951a5caf43e34bffbe72eb19fbfbcbb"
+lat = 43.88658787401135
+lon = -0.5083205120259326
+api_link = f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={api_key}&units=metric"
 
+#-------------------------------------------------------
+
+def get_data():
+        response = requests.get(f"{api_link}")
+        output = ""
+        if response.status_code == 200:
+            output = response.json()
+        else:
+            output = f"Hello person, there's a {response.status_code} error with your request"
+        return(str(output))
+
+msg = get_data()
 # --------------------------------------------------
 
 def connect_mqtt():
@@ -33,7 +50,7 @@ def connect_mqtt():
 def publish(client):
     time.sleep(1)
     
-    msg = "A single message from my computer"
+    
     result = client.publish(topic, msg)
     # result: [0, 1]
     status = result[0]
