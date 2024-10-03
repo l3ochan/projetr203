@@ -35,7 +35,7 @@ def store_in_db(data):
             host='localhost',
             database='projetr203', # change this to your database name
             user='ProjetUser',
-            password='bMp9xL6S8TjhffSr'
+            password='***RECACTED***'
         )
         print("Connected to database")
 
