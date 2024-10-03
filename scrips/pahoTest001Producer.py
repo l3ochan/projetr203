@@ -13,7 +13,7 @@ topic = "/1951a"
 # generate client ID with pub prefix randomly
 client_id = f'python-mqtt-{random.randint(0, 1000)}'
 callback_api_version = mqtt_client.MQTTv5
-api_key = "1951a5caf43e34bffbe72eb19fbfbcbb"
+api_key = "***RECACTED***"
 lat = 43.88658787401135
 lon = -0.5083205120259326
 api_link = f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={api_key}&units=metric"
